@@ -2,7 +2,9 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input/index';
 	import { Label } from '$lib/components/ui/label/index';
+	import * as Accordion from '$lib/components/ui/accordion';
 	import * as Alert from '$lib/components/ui/alert';
+	import { Separator } from '$lib/components/ui/separator';
 
 	import { Receipt } from 'lucide-svelte';
 
@@ -42,7 +44,7 @@
 			if (this.readyState === 4) {
 				const response = JSON.parse(this.response);
 				receipt = response.document.inference.prediction;
-				
+
 				supplier_name = receipt.supplier_name.value;
 				total_amount = receipt.total_amount.value;
 				date = receipt.date.value;
@@ -61,11 +63,13 @@
 	};
 </script>
 
-<div class="p-8 w-full grid gap-2 max-w-full">
+<div class="grid w-full max-w-full gap-2 p-8">
 	<form on:submit={mindeeSubmit} class="grid w-full max-w-full items-center gap-2">
-		<Label for="my-file-input" class="text-4xl font-bold">Receipt Scanner</Label>
+		<Label for="my-file-input" class="text-4xl font-bold"
+			><Receipt class="mb-2 inline-block" size="32" />Receipt Scanner</Label
+		>
 		<Input
-			class="bg-slate-100 text-black"
+			class="light:bg-slate-100 dark:bg-slate-900"
 			type="file"
 			id="my-file-input"
 			name="file"
@@ -74,37 +78,43 @@
 			capture="environment"
 			on:change={handleFileChange}
 		/>
-		<Button type="submit">Submit</Button>
+		<Button class="light:bg-slate-900 font-bold dark:bg-slate-100" type="submit">Submit</Button>
 	</form>
 
-	<Alert.Root class="bg-slate-100">
-		<Receipt />
-		<Alert.Title class="text-xl font-bold">Receipt Summary</Alert.Title>
-		<Alert.Description class="flex flex-col text-base">
-			<div class="flex flex-row">
-				<span class="mr-1">Supplier Name:</span>
-				<span class="font-bold">{receipt ? supplier_name : ''}</span>
-			</div>
-			<div class="flex flex-row">
-				<span class="mr-1">Total Amount:</span>
-				<span class="font-bold">{receipt ? total_amount : ''}</span>
-			</div>
-			<div class="flex flex-row">
-				<span class="mr-1">Purchase Date:</span>
-				<span class="font-bold">{receipt ? date : ''}</span>
-			</div>
-			<div class="flex flex-row">
-				<span class="mr-1">Purchase Time:</span>
-				<span class="font-bold">{receipt ? time : ''}</span>
-			</div>
-		</Alert.Description>
+	<!-- <Separator class="mb-2 mt-2 h-[3px]" /> -->
+
+	<Alert.Root class="light:bg-slate-100 dark:bg-slate-900 py-0 pl-0">
+		<Accordion.Root>
+			<Accordion.Item value="item1">
+				<Accordion.Trigger class="font-bold">Receipt Summary</Accordion.Trigger>
+				<Accordion.Content class="flex flex-col">
+					<div class="flex flex-row">
+						<span class="mr-1">Supplier Name:</span>
+						<span class="font-bold">{receipt ? supplier_name : ''}</span>
+					</div>
+					<div class="flex flex-row">
+						<span class="mr-1">Total Amount:</span>
+						<span class="font-bold">{receipt ? total_amount : ''}</span>
+					</div>
+					<div class="flex flex-row">
+						<span class="mr-1">Purchase Date:</span>
+						<span class="font-bold">{receipt ? date : ''}</span>
+					</div>
+					<div class="flex flex-row">
+						<span class="mr-1">Purchase Time:</span>
+						<span class="font-bold">{receipt ? time : ''}</span>
+					</div>
+				</Accordion.Content>
+			</Accordion.Item>
+		</Accordion.Root>
 	</Alert.Root>
 
 	{#if imageUrl}
 		<!-- Conditionally render the image if it exists -->
-		<Alert.Root class="flex items-center justify-center max-w-full bg-slate-100">
-			<img src="{imageUrl.toString()}" alt="Uploaded Receipt" class="max-h-[550px] rounded-lg" />
+		<Alert.Root
+			class="light:bg-slate-100 flex max-w-full items-center justify-center dark:bg-slate-900"
+		>
+			<img src={imageUrl.toString()} alt="Uploaded Receipt" class="max-h-[550px] rounded-lg" />
 		</Alert.Root>
 	{/if}
 </div>
-
