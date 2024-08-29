@@ -4,7 +4,6 @@
 	import { Label } from '$lib/components/ui/label/index';
 	import * as Accordion from '$lib/components/ui/accordion';
 	import * as Alert from '$lib/components/ui/alert';
-	import { Separator } from '$lib/components/ui/separator';
 
 	import { Receipt } from 'lucide-svelte';
 
