@@ -1,38 +1,34 @@
-# create-svelte
+<h1 align="center" id="title">ReceiptFlow</h1>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+<p align="center"><img src="https://socialify.git.ci/macko-pp/ReceiptFlow/image?font=Inter&amp;language=1&amp;name=1&amp;owner=1&amp;pattern=Circuit%20Board&amp;stargazers=1&amp;theme=Auto" alt="project-image"></p>
 
-## Creating a project
+<p id="description">Have you ever spent hours meticulously entering every single purchase into a Google sheet to simplify your taxes? Have you wished you could simply take a photo of receipts purchase vouchers or invoices with your phone and have the relevant information automatically populated in your Google sheet all for free? Well ReceiptFlow has got you covered! Using the Mindee API our intuitive user interface allows you to fulfill the dream of effortless tax preparation.</p>
 
-If you're seeing this, you've probably already done this step. Congrats!
+<p align="center"><img src="https://img.shields.io/badge/%F0%9F%9B%91-UNFINISHED-red" alt="shields"></p>
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+<h2>Project Screenshots:</h2>
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+<img src="https://github.com/Macko-pp/ReceiptFlow/blob/main/ReadmeAssets/filledScreenshot.png?raw=true" alt="project-screenshot" width="300" height="648/">
 
-## Developing
+<img src="https://github.com/Macko-pp/ReceiptFlow/blob/main/ReadmeAssets/blankScreenshot.png?raw=true" alt="project-screenshot" width="300" height="648/">
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+  
+  
+<h2>🧐 Features</h2>
 
-```bash
-npm run dev
+Here're some of the project's best features:
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+*   Scan Receipts
+*   Sync to Google Sheets
+*   Export as CSV
+*   See and filter relevant information
 
-## Building
+  
+  
+<h2>💻 Built with</h2>
 
-To create a production version of your app:
+Technologies used in the project:
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+*   SvelteKit
+*   Mindee
+*   shadcn-svelte
